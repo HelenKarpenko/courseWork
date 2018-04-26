@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+//        let db = DataBase.shared
+//        db.start()
+
+        let realm = try! Realm()
+        let folderPath = realm.configuration.fileURL!.path
+        print("Realm: Folder Path: \(folderPath)")
+////
+////        let client1 = Client()
+////        client1.id = 1
+////        client1.fullName = "James Bond"
+////        let client2 = Client()
+////        client2.id = 2
+////        client2.fullName = "Vasiliy Petrov"
+////
+        // Persist your data easily
+//        try! realm.write {
+//            for lesson in db.lessonTemplates.values {
+//                realm.add(lesson)
+//            }
+//            for scheduleItem in db.scheduleItems.values {
+//                realm.add(scheduleItem)
+//            }
+//            for coach in db.OLDCoaches.values {
+//                realm.add(coach)
+//            }
+//            for client in db.clients.values {
+//                realm.add(client as! Object)
+//            }
+//        }
         return true
     }
 

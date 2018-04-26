@@ -1,0 +1,96 @@
+{
+  "coaches": [
+    {
+      "firstName": "Elena",
+      "lastName": "Karpenko",
+      "category": "judo",
+      "experience": 5,
+      "position": "personal coach",
+      "id": 3,
+      "schedule": [
+        {
+          "lessonId": 1,
+          "date": "2018/04/24 10:30:00",
+          "clientsId": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "lessonId": 2,
+          "date": "2018/04/25 11:30:00",
+          "clientsId": [
+            1,
+            2,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "firstName": "Anna",
+      "lastName": "Macarova",
+      "category": "judo",
+      "experience": 8,
+      "position": "personal coach",
+      "id": 4,
+      "schedule": []
+    },
+    {
+      "firstName": "Alex",
+      "lastName": "Don",
+      "category": "dance",
+      "experience": 8,
+      "position": "personal coach",
+      "id": 5,
+      "schedule": []
+    },
+    {
+      "lastName": "dasd",
+      "position": "dasd",
+      "schedule": [],
+      "firstName": "asdda",
+      "experience": 0,
+      "category": "dance",
+      "id": 8
+    }
+  ],
+  "lessonsPrototype": [
+    {
+      "title": "Judo1",
+      "category": "judo",
+      "maxPeopleCnt": 20,
+      "id": 1
+    },
+    {
+      "title": "Judo2",
+      "category": "judo",
+      "maxPeopleCnt": 30,
+      "id": 2
+    }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "firstName": "Client",
+      "lastName": "Pupkin"
+    },
+    {
+      "id": 2,
+      "firstName": "Client",
+      "lastName": "Vtoroy"
+    },
+    {
+      "id": 3,
+      "firstName": "Client",
+      "lastName": "LOL"
+    },
+    {
+      "lastName": "Koleno",
+      "firstName": "Elena",
+      "id": 4
+    }
+  ]
+}
