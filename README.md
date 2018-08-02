@@ -23,7 +23,7 @@ Everyone want to be healthy and tactful. To this end, we usually record to the f
 
 ### Example
 **Sign In**
-<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/SignIn.png" width="48">
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/SignIn.png" width="50%">
 **Sign Up**
 ![alt text](https://github.com/HelenKarpenko/courseWork/blob/assets/SignUp.png?raw=true)
 **User's information**
