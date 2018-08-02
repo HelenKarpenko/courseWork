@@ -8,70 +8,143 @@
 
 import UIKit
 
-class ClientDetailController: UIViewController {
 
-    var client: IClient!
-//    var clientData: [ClientData]!
+fileprivate enum CellType: Int {
+    case phone
+    case email
+    case address
+    case schedule
+    case button
+    
+    var text: String {
+        switch self {
+        case .phone: return "Phone"
+        case .email: return "Email"
+        case .address: return "Address"
+        case .schedule: return "Schedule"
+        case .button: return "CalculateBill"
+        }
+    }
+}
+
+class ClientDetailController: UIViewController {
+    var clientToShow: Client?
+    var client: IUser { return clientToShow ?? User.currUser!}
+    var fields = [String]()
+    var values = [String]()
     
     @IBOutlet weak var clientFullName: UILabel!
     @IBOutlet weak var clientDataTable: UITableView!
+    
+    private func setupData() {
+        self.clientFullName.text = client.fullName
+        
+        self.fields = [CellType.phone.text,
+                       CellType.email.text,
+                       CellType.address.text,
+                       CellType.schedule.text,
+                       CellType.button.text]
+        
+        self.values = [client.phone,
+                       client.email,
+                       client.address,
+                       "Details"]
+    }
+    
+    private func setupView() {
+        self.clientDataTable.dataSource = self
+        self.clientDataTable.delegate = self
+        self.clientDataTable.tableFooterView = UIView()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        self.clientData = self.client.tableRepresentation
-        self.clientDataTable.dataSource = self
+        setupData()
+        setupView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        clientFullName.text = clientData[0].value
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    @IBAction func signOut(_ sender: Any) {
+        User.currUser = nil
+        performSegue(withIdentifier: "SignOut", sender: nil)
     }
     
-
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "OpenCoachSchedule" {
+            guard let controller = segue.destination as? CoachSheduleTableView else {
+                fatalError("Cannot find CoachScheduleTableView")
+            }
+            controller.user = client
+        }
+        
+        if segue.identifier == "SignOut" {
+            guard let _ = segue.destination as? LogIn else {
+                fatalError("Cannot find LogIn")
+            }
+        }
     }
-    */
 
 }
 
 extension ClientDetailController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-//        return clientData.count
+        return fields.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ClientDataItem", for: indexPath)
-//        cell.textLabel!.text = clientData[indexPath.row].title
-//        cell.detailTextLabel!.text = clientData[indexPath.row].value
-//        if clientData[indexPath.row].title == "Schedule" {
-//            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-//        }
-        return cell
-    }
-    
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if self.clientDataTable.indexPathForSelectedRow?.row == (clientData.count - 1) {
-//            if segue.identifier == "ClientSchedule" {
-//                guard let controller = segue.destination as? ClientScheduleTableView else {
-//                    fatalError("Cannot find ClientScheduleTableView")
-//                }
-//                controller.schedule = client.schedule
-//            }
-//        }
+        
+        switch indexPath.row {
+        case CellType.button.rawValue:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "CalculateBillItem", for: indexPath) as? CalculateBillCell else {
+                fatalError("Vse ploho")
+            }
+            cell.delegate = self
+            return cell
+        default:
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CoachDataItem", for: indexPath)
+            cell.selectionStyle = .none
+            cell.textLabel!.text = fields[indexPath.row]
+            cell.detailTextLabel!.text = values[indexPath.row]
+            if fields[indexPath.row] == "Schedule" {
+                cell.detailTextLabel?.textColor = .blue
+                cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+                cell.selectionStyle = .default
+            }
+            return cell
+        }
     }
 }
+
+extension ClientDetailController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if fields.index(of: "Schedule") == indexPath.row {
+            performSegue(withIdentifier: "OpenCoachSchedule", sender: nil)
+        }
+    }
+}
+
+extension ClientDetailController: CalculateBillHandler {
+    
+    func calculateBill() {
+        let bill = User.currUser?.getPayment()
+        let info = "Your bill is \(String(describing: bill!))₴"
+        displayAlertMessage(info)
+    }
+    
+    func displayAlertMessage(_ userMessage:String){
+    
+        let alert = UIAlertController(title:"Bill", message: userMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let ok = UIAlertAction(title:"Ok", style:UIAlertActionStyle.default, handler:nil)
+        alert.addAction(ok)
+        self.present(alert, animated:true, completion:nil)
+        
+    }
+    
+}
+
+

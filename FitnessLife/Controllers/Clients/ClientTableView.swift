@@ -13,68 +13,85 @@ class ClientTableView: UITableViewController, UISearchBarDelegate {
     
     var notificationToken: NotificationToken!
     
-    var filteredClients = [IClient]()
+    @IBOutlet weak var addButton: UIButton!
+    var filteredClients: Results<Client>?
     var db = DataBase.shared
+    var restored = false
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    func configure() {
-        // subscibe for changes
+    
+    func subscribeOnChanges() {
         notificationToken =
-            db.privateClients.observe({ [weak self] change in
-            switch change  {
-            case .initial(_):
-                self?.tableView.reloadData()
-            case .update(_, let deletions, let insertions, let modifications):
-                self?.tableView.applyChanges(deletions: deletions, insertions: insertions, updates: modifications)
-            case .error(let e):
-                print("Synchronization error: \(e)")
-            }
-        })
+            db.clients.observe({ [weak self] change in
+                switch change  {
+                case .initial(_):
+                    self?.tableView.reloadData()
+                case .update(_, let deletions, let insertions, let modifications):
+                    self?.tableView.applyChanges(deletions: deletions, insertions: insertions, updates: modifications)
+                case .error(let e):
+                    print("Synchronization error: \(e)")
+                }
+            })
+    }
+    
+    private func setupData() {
+        filteredClients = db.clients
+        self.subscribeOnChanges()
+        tableView.reloadData()
+    }
+    
+    private func setupRole() {
+        if User.currUser is Client {
+            self.addButton.isHidden = true
+        }
+    }
+    
+    private func setupView() {
+        searchBar.delegate = self
+        tableView.tableFooterView = UIView()
+    }
+    
+    private func restoreState() {
+        guard let tabBarController = self.parent?.parent as? UITabBarController else {
+            return
+        }
+        StateManager.shared.mainTabIndex = tabBarController.selectedIndex
+        if !restored {
+            StateManager.shared.restore(viewController: self as Restorable)
+            restored = true
+        }
+    }
+    
+    private func saveState() {
+        StateManager.shared.store(viewController: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        clients = Array(db.clients.values)
-//        filteredClients = clients
-        self.configure()
-        tableView.reloadData()
-        searchBar.delegate = self
+        setupData()
+        setupRole()
+        setupView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        restoreState()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        saveState()
     }
     
     @IBAction func addClientButton(_ sender: UIButton) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let privateAction = UIAlertAction(title: "Private", style: .default) { (_) in
-            self.showClientEditor(ofType: .privateType, withCreator: PrivateClientCreator() as ICreator)
-        }
-        let corporateAction = UIAlertAction(title: "Corporate", style: .default) { _ in
-            self.showClientEditor(ofType: .corporateType, withCreator: CorporateClientCreator() as ICreator)
-        }
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alert.addAction(privateAction)
-        alert.addAction(corporateAction)
-        alert.addAction(cancel)
-        present(alert, animated: true, completion:  nil)
-    }
-    
-    func showClientEditor(ofType type: ClientType, withCreator creator: ICreator) {
         let sb = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let editor = sb.instantiateViewController(withIdentifier: "ClientEditor") as? ClientEditorController else {
             fatalError("vse ploho!")
         }
-//        editor.type = type
-        editor.creator = creator
+        
         let nav = UINavigationController(rootViewController: editor)
         self.present(nav, animated: true, completion: nil)
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 
     // MARK: - Table view data source
@@ -84,97 +101,79 @@ class ClientTableView: UITableViewController, UISearchBarDelegate {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return filteredClients.count
-        return db.privateClients.count
+        return filteredClients!.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClientItem", for: indexPath)
-        let client = db.privateClients[indexPath.row]
-//        let client = filteredClients[indexPath.row]
+
+        let client = filteredClients![indexPath.row]
         cell.textLabel?.text = client.fullName
-//        if(client is PrivateClient) {
-            cell.detailTextLabel?.text = "Private"
-//        } else {
-//            cell.detailTextLabel?.text = "Corporate"
-//        }
         return cell
     }
  
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return User.currUser is Coach
     }
 
-
-    
-    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let alertController = UIAlertController(title: "Remove", message: "Are you sure?", preferredStyle: .alert)
             
-//            let client = filteredClients[indexPath.row]
-//            db.removeClient(client)
-//            if let index = self.clients.index(where: { $0.id == client.id }) {
-//                self.clients.remove(at: index)
-//            }
-//            self.filteredClients.remove(at: indexPath.row)
-//            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: {_ -> Void in
+                let client = self.filteredClients![indexPath.row]
+                do {
+                    try self.db.removeClient(client)
+                } catch {
+                    fatalError("vse ploho!")
+                }
+            }))
+            alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: { _ -> Void in }))
+            self.present(alertController, animated: true, completion: nil)
+            
             
         } else if editingStyle == .insert {
             print("error")
         }
     }
 
-    // Override to support rearranging the table view.
-//    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-//        let itemToMove = filteredClients[fromIndexPath.row]
-//        filteredClients.remove(at: fromIndexPath.row)
-//        filteredClients.insert(itemToMove, at: fromIndexPath.row)
-//    }
-
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-
     
     // MARK: - Search
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        filteredClients = clients.filter({ client -> Bool in
-//            let fullName = client.fullName
-//            switch searchBar.selectedScopeButtonIndex {
-//            case 0:
-//                if searchText.isEmpty { return true }
-//                return fullName.lowercased().contains(searchText.lowercased())
-//            case 1:
-//                if searchText.isEmpty { return client is PrivateClient }
-//                return fullName.lowercased().contains(searchText.lowercased()) &&
-//                    client is PrivateClient
-//            case 2:
-//                if searchText.isEmpty { return client is CorporateClient }
-//                return fullName.lowercased().contains(searchText.lowercased()) &&
-//                    client is CorporateClient
-//            default:
-//                return false
-//            }
-//        })
-//        tableView.reloadData()
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
     
-//    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-//        switch selectedScope {
-//        case 0:
-//            filteredClients = clients
-//        case 1: filteredClients = clients.filter({ client -> Bool in
-//            client is PrivateClient
-//        })
-//        case 2: filteredClients = clients.filter({ client -> Bool in
-//            client is CorporateClient
-//        })
-//        default:
-//            break
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        search()
+        searchBar.resignFirstResponder()
+    }
+    
+    func search() {
+        let searchText = searchBar.text ?? ""
+        let byFullName = NSPredicate(format: "fullName CONTAINS[c] %@", searchText)
+        if searchText.isEmpty {
+            filteredClients = db.clients
+        } else {
+            filteredClients = db.clients.filter(byFullName)
+        }
+        tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        search()
+//        let byFullName = NSPredicate(format: "fullName CONTAINS[c] %@", searchText)
+//        if searchText.isEmpty {
+//            filteredClients = db.clients
+//        } else {
+//            filteredClients = db.clients.filter(byFullName)
 //        }
 //        tableView.reloadData()
-//    }
+    }
     
     // MARK: - Navigation
 
@@ -184,9 +183,39 @@ class ClientTableView: UITableViewController, UISearchBarDelegate {
                 fatalError("Cannot find ClientDetailController")
             }
             if let row = tableView.indexPathForSelectedRow?.row {
-                controller.client = db.privateClients[row]
+                controller.clientToShow = db.clients[row]
             }
         }
     }
 
+}
+
+// MARK: - Memento
+
+private enum StateKeys: String {
+    case searchState
+    case searchTabState
+}
+
+
+extension ClientTableView: Restorable {
+    var state: State {
+        return [StateKeys.searchState.rawValue: self.searchBar.text ?? "",
+                StateKeys.searchTabState.rawValue: self.searchBar.selectedScopeButtonIndex]
+    }
+    
+    func restore(from state: State) -> Bool {
+        var result = true
+        
+        self.searchBar.text = state[StateKeys.searchState.rawValue] as? String ?? ""
+        var searchTabIndex = state[StateKeys.searchTabState.rawValue] as? Int ?? 0
+        if (searchTabIndex < 0 || searchTabIndex > 5) {
+            result = false
+            searchTabIndex = 0
+        }
+        self.searchBar.selectedScopeButtonIndex = searchTabIndex
+        search()
+        
+        return result
+    }
 }

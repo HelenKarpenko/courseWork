@@ -8,28 +8,37 @@
 
 /* Begin PBXBuildFile section */
 		11814394F31539F3FAE97182 /* Pods_FitnessLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC019FED31C6ED710F5E142 /* Pods_FitnessLife.framework */; };
+		BF280D932098B4D4006A7B9A /* EnrollButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF280D922098B4D4006A7B9A /* EnrollButtonCell.swift */; };
+		BF2A772E209784DE0086E77B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2A772D209784DE0086E77B /* User.swift */; };
+		BF2A77312097BEB00086E77B /* UserCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2A77302097BEB00086E77B /* UserCreator.swift */; };
 		BF360054208FAB10009D3202 /* ClientEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF360053208FAB10009D3202 /* ClientEditorController.swift */; };
 		BF360057208FBB5E009D3202 /* EditorTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF360056208FBB5E009D3202 /* EditorTextCell.swift */; };
 		BF394F1120851661003D4887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF394F1020851661003D4887 /* AppDelegate.swift */; };
 		BF394F1620851661003D4887 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF394F1420851661003D4887 /* Main.storyboard */; };
 		BF394F1820851661003D4887 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF394F1720851661003D4887 /* Assets.xcassets */; };
 		BF394F1B20851661003D4887 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF394F1920851661003D4887 /* LaunchScreen.storyboard */; };
-		BF394F292085409C003D4887 /* ScheduleDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF394F282085409C003D4887 /* ScheduleDetailController.swift */; };
 		BF41ECDE208BA87E00479A48 /* ScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF41ECDD208BA87E00479A48 /* ScheduleItem.swift */; };
-		BF41ECE6208BCA7800479A48 /* ScheduleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF41ECE5208BCA7800479A48 /* ScheduleList.swift */; };
-		BF41ECE8208BCA7B00479A48 /* CoachDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF41ECE7208BCA7B00479A48 /* CoachDetailController.swift */; };
 		BF431ED5208CB9D4009525E6 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF431ED4208CB9D4009525E6 /* Client.swift */; };
 		BF431ED7208CE8BF009525E6 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF431ED6208CE8BF009525E6 /* Formatter.swift */; };
-		BF655B83208D2B7A0007E202 /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF655B82208D2B7A0007E202 /* PersistencyManager.swift */; };
-		BF655B85208D2E170007E202 /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF655B84208D2E170007E202 /* LibraryAPI.swift */; };
+		BF54EC5D20967368006219CD /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF54EC5C20967368006219CD /* StateManager.swift */; };
+		BF54EC5F209673B9006219CD /* StateStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF54EC5E209673B9006219CD /* StateStorage.swift */; };
+		BF54EC61209673DD006219CD /* Restorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF54EC60209673DD006219CD /* Restorable.swift */; };
 		BF677EC52090F59B008DB513 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF677EC42090F59B008DB513 /* UITableView+Ext.swift */; };
 		BF677ECB2091309A008DB513 /* CoachEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF677ECA2091309A008DB513 /* CoachEditorController.swift */; };
+		BF866A3B2097090200971DD5 /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF866A3A2097090200971DD5 /* LogIn.swift */; };
+		BF866A3D20970F8200971DD5 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF866A3C20970F8200971DD5 /* SignUp.swift */; };
 		BF8D5959208E080800079B94 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8D5958208E080800079B94 /* DataBase.swift */; };
-		BFBDD666208DF09600DF4DF1 /* ClientScheduleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD665208DF09600DF4DF1 /* ClientScheduleTableView.swift */; };
-		BFBDD668208DF7B100DF4DF1 /* ScheduleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD667208DF7B100DF4DF1 /* ScheduleTableView.swift */; };
-		BFCCBBCE2087B4080075703C /* db.json in Resources */ = {isa = PBXBuildFile; fileRef = BFCCBBCD2087B4080075703C /* db.json */; };
-		BFCCBBD5208A31350075703C /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCCBBD4208A31340075703C /* HTTPClient.swift */; };
+		BFAEC0DB209A178A00A3644E /* EditorCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAEC0DA209A178A00A3644E /* EditorCategoryCell.swift */; };
 		BFCCBBDC208B607F0075703C /* CoachTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCCBBDB208B607F0075703C /* CoachTableView.swift */; };
+		BFDADDE92099DF3600C3A195 /* CalculateBillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDADDE82099DF3600C3A195 /* CalculateBillCell.swift */; };
+		BFDE0B3F209482DA00A38CD8 /* CoachDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE0B3E209482DA00A38CD8 /* CoachDetailController.swift */; };
+		BFDE0B41209494C500A38CD8 /* CoachSheduleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE0B40209494C500A38CD8 /* CoachSheduleTableView.swift */; };
+		BFDE0B442094C3B100A38CD8 /* ScheduleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE0B432094C3B100A38CD8 /* ScheduleTableView.swift */; };
+		BFDE0B482094CD9300A38CD8 /* ScheduleItemEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE0B472094CD9300A38CD8 /* ScheduleItemEditorController.swift */; };
+		BFDE0B4C209632FD00A38CD8 /* CoachSelectionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE0B4B209632FD00A38CD8 /* CoachSelectionTableView.swift */; };
+		BFDE0B4E2096355900A38CD8 /* LessonsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE0B4D2096355900A38CD8 /* LessonsTableView.swift */; };
+		BFDE0B5120964B0000A38CD8 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE0B5020964B0000A38CD8 /* DatePickerCell.swift */; };
+		BFE8EA772098A83100BA3D98 /* ScheduleItemDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE8EA762098A83100BA3D98 /* ScheduleItemDetailController.swift */; };
 		BFF36AEF208DC66B0007855A /* ClientTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF36AEE208DC66B0007855A /* ClientTableView.swift */; };
 		BFF36AF3208DDAB80007855A /* ClientDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF36AF2208DDAB80007855A /* ClientDetailController.swift */; };
 		BFFE8B1620868AFF00A19430 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFE8B1520868AFF00A19430 /* Lesson.swift */; };
@@ -52,6 +61,9 @@
 /* Begin PBXFileReference section */
 		682A656867082FB44CAFC838 /* Pods-FitnessLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessLife.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitnessLife/Pods-FitnessLife.debug.xcconfig"; sourceTree = "<group>"; };
 		9BDD6244C3DC7D8D3B4D262B /* Pods-FitnessLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessLife.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitnessLife/Pods-FitnessLife.release.xcconfig"; sourceTree = "<group>"; };
+		BF280D922098B4D4006A7B9A /* EnrollButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollButtonCell.swift; sourceTree = "<group>"; };
+		BF2A772D209784DE0086E77B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BF2A77302097BEB00086E77B /* UserCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreator.swift; sourceTree = "<group>"; };
 		BF360053208FAB10009D3202 /* ClientEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientEditorController.swift; sourceTree = "<group>"; };
 		BF360056208FBB5E009D3202 /* EditorTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTextCell.swift; sourceTree = "<group>"; };
 		BF394F0D20851661003D4887 /* FitnessLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,22 +72,28 @@
 		BF394F1720851661003D4887 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF394F1A20851661003D4887 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF394F1C20851661003D4887 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF394F282085409C003D4887 /* ScheduleDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailController.swift; sourceTree = "<group>"; };
 		BF41ECDD208BA87E00479A48 /* ScheduleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleItem.swift; sourceTree = "<group>"; };
-		BF41ECE5208BCA7800479A48 /* ScheduleList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleList.swift; sourceTree = "<group>"; };
-		BF41ECE7208BCA7B00479A48 /* CoachDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachDetailController.swift; sourceTree = "<group>"; };
 		BF431ED4208CB9D4009525E6 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		BF431ED6208CE8BF009525E6 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
-		BF655B82208D2B7A0007E202 /* PersistencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
-		BF655B84208D2E170007E202 /* LibraryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
+		BF54EC5C20967368006219CD /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
+		BF54EC5E209673B9006219CD /* StateStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateStorage.swift; sourceTree = "<group>"; };
+		BF54EC60209673DD006219CD /* Restorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restorable.swift; sourceTree = "<group>"; };
 		BF677EC42090F59B008DB513 /* UITableView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		BF677ECA2091309A008DB513 /* CoachEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachEditorController.swift; sourceTree = "<group>"; };
+		BF866A3A2097090200971DD5 /* LogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
+		BF866A3C20970F8200971DD5 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		BF8D5958208E080800079B94 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
-		BFBDD665208DF09600DF4DF1 /* ClientScheduleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientScheduleTableView.swift; sourceTree = "<group>"; };
-		BFBDD667208DF7B100DF4DF1 /* ScheduleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableView.swift; sourceTree = "<group>"; };
-		BFCCBBCD2087B4080075703C /* db.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = db.json; sourceTree = "<group>"; };
-		BFCCBBD4208A31340075703C /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		BFAEC0DA209A178A00A3644E /* EditorCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorCategoryCell.swift; sourceTree = "<group>"; };
 		BFCCBBDB208B607F0075703C /* CoachTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachTableView.swift; sourceTree = "<group>"; };
+		BFDADDE82099DF3600C3A195 /* CalculateBillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateBillCell.swift; sourceTree = "<group>"; };
+		BFDE0B3E209482DA00A38CD8 /* CoachDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachDetailController.swift; sourceTree = "<group>"; };
+		BFDE0B40209494C500A38CD8 /* CoachSheduleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachSheduleTableView.swift; sourceTree = "<group>"; };
+		BFDE0B432094C3B100A38CD8 /* ScheduleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableView.swift; sourceTree = "<group>"; };
+		BFDE0B472094CD9300A38CD8 /* ScheduleItemEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleItemEditorController.swift; sourceTree = "<group>"; };
+		BFDE0B4B209632FD00A38CD8 /* CoachSelectionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachSelectionTableView.swift; sourceTree = "<group>"; };
+		BFDE0B4D2096355900A38CD8 /* LessonsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsTableView.swift; sourceTree = "<group>"; };
+		BFDE0B5020964B0000A38CD8 /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
+		BFE8EA762098A83100BA3D98 /* ScheduleItemDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleItemDetailController.swift; sourceTree = "<group>"; };
 		BFF36AEE208DC66B0007855A /* ClientTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTableView.swift; sourceTree = "<group>"; };
 		BFF36AF2208DDAB80007855A /* ClientDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDetailController.swift; sourceTree = "<group>"; };
 		BFFE8B1520868AFF00A19430 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
@@ -112,11 +130,21 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BF2A772F2097BE7E0086E77B /* User */ = {
+			isa = PBXGroup;
+			children = (
+				BF2A772D209784DE0086E77B /* User.swift */,
+				BFFE8B1720868CD400A19430 /* Coach.swift */,
+				BF431ED4208CB9D4009525E6 /* Client.swift */,
+				BF2A77302097BEB00086E77B /* UserCreator.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		BF360055208FBB1E009D3202 /* ClientEditor */ = {
 			isa = PBXGroup;
 			children = (
 				BF360053208FAB10009D3202 /* ClientEditorController.swift */,
-				BF360056208FBB5E009D3202 /* EditorTextCell.swift */,
 			);
 			path = ClientEditor;
 			sourceTree = "<group>";
@@ -124,7 +152,6 @@
 		BF394F0420851661003D4887 = {
 			isa = PBXGroup;
 			children = (
-				BFCCBBCC2087B3BC0075703C /* Server */,
 				BF394F0F20851661003D4887 /* FitnessLife */,
 				BF394F0E20851661003D4887 /* Products */,
 				AAD4C8F5FA1F836165827F1E /* Pods */,
@@ -144,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				BFCCBBCF2087E6DE0075703C /* API */,
+				BF54EC5B2096733D006219CD /* StateManager */,
 				BF41ECDB208B99CB00479A48 /* Models */,
 				BF41ECE4208BCA6100479A48 /* Controllers */,
 				BF677EC22090E85C008DB513 /* Views */,
@@ -156,11 +184,9 @@
 		BF41ECDB208B99CB00479A48 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BF8D5958208E080800079B94 /* DataBase.swift */,
+				BF2A772F2097BE7E0086E77B /* User */,
 				BFFE8B1520868AFF00A19430 /* Lesson.swift */,
-				BFFE8B1720868CD400A19430 /* Coach.swift */,
 				BF41ECDD208BA87E00479A48 /* ScheduleItem.swift */,
-				BF431ED4208CB9D4009525E6 /* Client.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -168,31 +194,22 @@
 		BF41ECE4208BCA6100479A48 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BF866A39209708D400971DD5 /* Log */,
+				BFDE0B422094C39600A38CD8 /* Schedule */,
 				BF677EC720912BFA008DB513 /* Coaches */,
 				BF677EC62090F92A008DB513 /* Clients */,
-				BF431ECB208BCB63009525E6 /* Lists */,
-				BF431ECD208BCB94009525E6 /* Details */,
-				BFBDD665208DF09600DF4DF1 /* ClientScheduleTableView.swift */,
-				BFBDD667208DF7B100DF4DF1 /* ScheduleTableView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		BF431ECB208BCB63009525E6 /* Lists */ = {
+		BF54EC5B2096733D006219CD /* StateManager */ = {
 			isa = PBXGroup;
 			children = (
-				BF41ECE5208BCA7800479A48 /* ScheduleList.swift */,
+				BF54EC5C20967368006219CD /* StateManager.swift */,
+				BF54EC5E209673B9006219CD /* StateStorage.swift */,
+				BF54EC60209673DD006219CD /* Restorable.swift */,
 			);
-			path = Lists;
-			sourceTree = "<group>";
-		};
-		BF431ECD208BCB94009525E6 /* Details */ = {
-			isa = PBXGroup;
-			children = (
-				BF394F282085409C003D4887 /* ScheduleDetailController.swift */,
-				BF41ECE7208BCA7B00479A48 /* CoachDetailController.swift */,
-			);
-			path = Details;
+			path = StateManager;
 			sourceTree = "<group>";
 		};
 		BF677EC22090E85C008DB513 /* Views */ = {
@@ -221,6 +238,7 @@
 				BFF36AEE208DC66B0007855A /* ClientTableView.swift */,
 				BFF36AF2208DDAB80007855A /* ClientDetailController.swift */,
 				BF360055208FBB1E009D3202 /* ClientEditor */,
+				BFDADDE82099DF3600C3A195 /* CalculateBillCell.swift */,
 			);
 			path = Clients;
 			sourceTree = "<group>";
@@ -229,6 +247,8 @@
 			isa = PBXGroup;
 			children = (
 				BFCCBBDB208B607F0075703C /* CoachTableView.swift */,
+				BFDE0B3E209482DA00A38CD8 /* CoachDetailController.swift */,
+				BFDE0B40209494C500A38CD8 /* CoachSheduleTableView.swift */,
 				BF677EC820913065008DB513 /* CoachEditor */,
 			);
 			path = Coaches;
@@ -237,27 +257,58 @@
 		BF677EC820913065008DB513 /* CoachEditor */ = {
 			isa = PBXGroup;
 			children = (
+				BF360056208FBB5E009D3202 /* EditorTextCell.swift */,
 				BF677ECA2091309A008DB513 /* CoachEditorController.swift */,
+				BFAEC0DA209A178A00A3644E /* EditorCategoryCell.swift */,
 			);
 			path = CoachEditor;
 			sourceTree = "<group>";
 		};
-		BFCCBBCC2087B3BC0075703C /* Server */ = {
+		BF866A39209708D400971DD5 /* Log */ = {
 			isa = PBXGroup;
 			children = (
-				BFCCBBCD2087B4080075703C /* db.json */,
+				BF866A3A2097090200971DD5 /* LogIn.swift */,
+				BF866A3C20970F8200971DD5 /* SignUp.swift */,
 			);
-			path = Server;
+			path = Log;
 			sourceTree = "<group>";
 		};
 		BFCCBBCF2087E6DE0075703C /* API */ = {
 			isa = PBXGroup;
 			children = (
-				BFCCBBD4208A31340075703C /* HTTPClient.swift */,
-				BF655B82208D2B7A0007E202 /* PersistencyManager.swift */,
-				BF655B84208D2E170007E202 /* LibraryAPI.swift */,
+				BF8D5958208E080800079B94 /* DataBase.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		BFDE0B422094C39600A38CD8 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				BFDE0B432094C3B100A38CD8 /* ScheduleTableView.swift */,
+				BFE8EA762098A83100BA3D98 /* ScheduleItemDetailController.swift */,
+				BF280D922098B4D4006A7B9A /* EnrollButtonCell.swift */,
+				BFDE0B462094CC9500A38CD8 /* ScheduleItemEditor */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		BFDE0B462094CC9500A38CD8 /* ScheduleItemEditor */ = {
+			isa = PBXGroup;
+			children = (
+				BFDE0B472094CD9300A38CD8 /* ScheduleItemEditorController.swift */,
+				BFDE0B4B209632FD00A38CD8 /* CoachSelectionTableView.swift */,
+				BFDE0B4D2096355900A38CD8 /* LessonsTableView.swift */,
+				BFDE0B4F20964AD400A38CD8 /* Cell */,
+			);
+			path = ScheduleItemEditor;
+			sourceTree = "<group>";
+		};
+		BFDE0B4F20964AD400A38CD8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BFDE0B5020964B0000A38CD8 /* DatePickerCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,7 +341,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Karpenko Elena";
 				TargetAttributes = {
 					BF394F0C20851661003D4887 = {
@@ -323,7 +374,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF394F1B20851661003D4887 /* LaunchScreen.storyboard in Resources */,
-				BFCCBBCE2087B4080075703C /* db.json in Resources */,
 				BF394F1820851661003D4887 /* Assets.xcassets in Resources */,
 				BF394F1620851661003D4887 /* Main.storyboard in Resources */,
 			);
@@ -378,27 +428,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFFE8B1620868AFF00A19430 /* Lesson.swift in Sources */,
-				BF394F292085409C003D4887 /* ScheduleDetailController.swift in Sources */,
-				BF41ECE8208BCA7B00479A48 /* CoachDetailController.swift in Sources */,
+				BF54EC5D20967368006219CD /* StateManager.swift in Sources */,
 				BF360054208FAB10009D3202 /* ClientEditorController.swift in Sources */,
-				BFCCBBD5208A31350075703C /* HTTPClient.swift in Sources */,
 				BF8D5959208E080800079B94 /* DataBase.swift in Sources */,
 				BF431ED5208CB9D4009525E6 /* Client.swift in Sources */,
+				BFDE0B5120964B0000A38CD8 /* DatePickerCell.swift in Sources */,
+				BFAEC0DB209A178A00A3644E /* EditorCategoryCell.swift in Sources */,
+				BFDE0B4C209632FD00A38CD8 /* CoachSelectionTableView.swift in Sources */,
 				BF394F1120851661003D4887 /* AppDelegate.swift in Sources */,
-				BF655B85208D2E170007E202 /* LibraryAPI.swift in Sources */,
-				BFBDD666208DF09600DF4DF1 /* ClientScheduleTableView.swift in Sources */,
+				BF280D932098B4D4006A7B9A /* EnrollButtonCell.swift in Sources */,
+				BF2A772E209784DE0086E77B /* User.swift in Sources */,
+				BF866A3B2097090200971DD5 /* LogIn.swift in Sources */,
 				BF431ED7208CE8BF009525E6 /* Formatter.swift in Sources */,
+				BFDE0B3F209482DA00A38CD8 /* CoachDetailController.swift in Sources */,
+				BFDE0B482094CD9300A38CD8 /* ScheduleItemEditorController.swift in Sources */,
 				BFF36AF3208DDAB80007855A /* ClientDetailController.swift in Sources */,
 				BFCCBBDC208B607F0075703C /* CoachTableView.swift in Sources */,
 				BF677ECB2091309A008DB513 /* CoachEditorController.swift in Sources */,
-				BFBDD668208DF7B100DF4DF1 /* ScheduleTableView.swift in Sources */,
 				BF41ECDE208BA87E00479A48 /* ScheduleItem.swift in Sources */,
-				BF41ECE6208BCA7800479A48 /* ScheduleList.swift in Sources */,
+				BFDE0B41209494C500A38CD8 /* CoachSheduleTableView.swift in Sources */,
+				BF54EC5F209673B9006219CD /* StateStorage.swift in Sources */,
 				BFFE8B1820868CD400A19430 /* Coach.swift in Sources */,
+				BF2A77312097BEB00086E77B /* UserCreator.swift in Sources */,
 				BFF36AEF208DC66B0007855A /* ClientTableView.swift in Sources */,
+				BFE8EA772098A83100BA3D98 /* ScheduleItemDetailController.swift in Sources */,
+				BFDE0B4E2096355900A38CD8 /* LessonsTableView.swift in Sources */,
+				BFDE0B442094C3B100A38CD8 /* ScheduleTableView.swift in Sources */,
 				BF677EC52090F59B008DB513 /* UITableView+Ext.swift in Sources */,
-				BF655B83208D2B7A0007E202 /* PersistencyManager.swift in Sources */,
+				BFDADDE92099DF3600C3A195 /* CalculateBillCell.swift in Sources */,
+				BF54EC61209673DD006219CD /* Restorable.swift in Sources */,
 				BF360057208FBB5E009D3202 /* EditorTextCell.swift in Sources */,
+				BF866A3D20970F8200971DD5 /* SignUp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +498,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -445,6 +506,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -495,6 +557,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -502,6 +565,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

@@ -231,7 +231,7 @@ class HTTPClient: NSObject {
 //        })
     }
 
-    func getAllClients(onSuccess: @escaping ([IClient]) -> Void,
+    func getAllClients(onSuccess: @escaping ([Client]) -> Void,
                        onFailure: @escaping (Error) -> Void){
 //        let path : String = HTTPClient.getClientsEndpoint
 //        GET(path: path,

@@ -12,13 +12,14 @@ import RealmSwift
 class CoachTableView: UITableViewController, UISearchBarDelegate {
 
     var notificationToken: NotificationToken!
-    
+    @IBOutlet weak var addButton: UIButton!
     var filteredCoaches: Results<Coach>?
     var db = DataBase.shared
+    var restored = false
     
     @IBOutlet weak var searchBar: UISearchBar!
 
-    func configure() {
+    private func subscribeOnChanges() {
         notificationToken =
             db.coaches.observe({ [weak self] change in
                 switch change  {
@@ -32,79 +33,65 @@ class CoachTableView: UITableViewController, UISearchBarDelegate {
             })
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.configure()
+    private func setupData() {
+        self.subscribeOnChanges()
         filteredCoaches = db.coaches
         tableView.reloadData()
-        searchBar.delegate = self
     }
     
-    private func setUpSearchBar() {
+    private func setupRole() {
+        if User.currUser is Client {
+            self.addButton.isHidden = true
+        }
+    }
+    
+    private func setupView() {
         searchBar.delegate = self
+        tableView.tableFooterView = UIView()
+    }
+    
+    private func restoreState() {
+        guard let tabBarController = self.parent?.parent as? UITabBarController else {
+            return
+        }
+        StateManager.shared.mainTabIndex = tabBarController.selectedIndex
+        if !restored {
+            StateManager.shared.restore(viewController: self as Restorable)
+            restored = true
+        }
+    }
+    
+    private func saveState() {
+        StateManager.shared.store(viewController: self)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupData()
+        setupRole()
+        setupView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        restoreState()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        saveState()
     }
     
     @IBAction func addCoachButton(_ sender: UIButton) {
+        let sb = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let editor = sb.instantiateViewController(withIdentifier: "CoachEditor") as? CoachEditorController else {
+            fatalError("vse ploho!")
+        }
         
-        let alertController = UIAlertController(title: "Create new coach", message: "", preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: {
-            alert -> Void in
-            let fullName = alertController.textFields![0].text
-            let phone = alertController.textFields![1].text
-            let email = alertController.textFields![2].text
-            let address = alertController.textFields![3].text
-
-            if fullName != "", phone != "", email != "", address != "" {
-                let coach = Coach()
-                coach.id = Coach.getId()
-                coach.fullName = fullName!
-                coach.phone = phone!
-                coach.email = email!
-                coach.address = address!
-                do {
-                    try self.db.addNewCoach(coach)
-                } catch {
-                    fatalError("vse ploho!")
-                }
-            } else {
-                let errorAlert = UIAlertController(title: "Error", message: "Please input both a first AND last name", preferredStyle: .alert)
-                errorAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {
-                    alert -> Void in
-                    self.present(alertController, animated: true, completion: nil)
-                }))
-                self.present(errorAlert, animated: true, completion: nil)
-            }
-        }))
-        
-        alertController.addTextField(configurationHandler: { (textField) -> Void in
-            textField.placeholder = "Full Name"
-            textField.textAlignment = .center
-        })
-        
-        alertController.addTextField(configurationHandler: { (textField) -> Void in
-            textField.placeholder = "Phone"
-            textField.textAlignment = .center
-        })
-        
-        alertController.addTextField(configurationHandler: { (textField) -> Void in
-            textField.placeholder = "Email"
-            textField.textAlignment = .center
-        })
-        
-        alertController.addTextField(configurationHandler: { (textField) -> Void in
-            textField.placeholder = "Address"
-            textField.textAlignment = .center
-        })
-        
-        
-        self.present(alertController, animated: true, completion: nil)
+        let nav = UINavigationController(rootViewController: editor)
+        self.present(nav, animated: true, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     // MARK: - Table view data source
     
@@ -122,6 +109,7 @@ class CoachTableView: UITableViewController, UISearchBarDelegate {
         let coach = filteredCoaches![indexPath.row]
         cell.textLabel?.text = coach.fullName
         cell.detailTextLabel?.text = coach.category
+        cell.imageView?.image = coach.rank.icon
         
         return cell
     }
@@ -129,7 +117,7 @@ class CoachTableView: UITableViewController, UISearchBarDelegate {
     // MARK: - Remove
     
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return User.currUser is Coach
      }
     
     
@@ -157,17 +145,22 @@ class CoachTableView: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
-//    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-//        let itemToMove = filteredCoaches![fromIndexPath.row]
-//        filteredCoaches.remove(at: fromIndexPath.row)
-//        filteredCoaches.insert(itemToMove, at: fromIndexPath.row)
-//    }
+
     
     // MARK: - Search
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        search()
+        searchBar.resignFirstResponder()
+    }
+    
+    func search() {
+        let searchText = searchBar.text ?? ""
         let byFullName = NSPredicate(format: "fullName CONTAINS[c] %@", searchText)
         
         switch searchBar.selectedScopeButtonIndex {
@@ -186,10 +179,20 @@ class CoachTableView: UITableViewController, UISearchBarDelegate {
         case 3:
             let byCategory = NSPredicate(format: "category ='Gymnastics'")
             filterCoaches(withSearchText: searchText, byFullName: byFullName, byCategory: byCategory)
+        case 4:
+            let byCategory = NSPredicate(format: "category ='Dance'")
+            filterCoaches(withSearchText: searchText, byFullName: byFullName, byCategory: byCategory)
+        case 5:
+            let byCategory = NSPredicate(format: "category ='Box'")
+            filterCoaches(withSearchText: searchText, byFullName: byFullName, byCategory: byCategory)
         default:
             filteredCoaches = db.coaches
         }
         tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        search()
     }
     
     private func filterCoaches(withSearchText searchText: String, byFullName: NSPredicate, byCategory: NSPredicate){
@@ -202,37 +205,51 @@ class CoachTableView: UITableViewController, UISearchBarDelegate {
     }
 
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-
-        switch searchBar.selectedScopeButtonIndex {
-        case 0:
-            filteredCoaches = db.coaches
-        case 1:
-            let byCategory = NSPredicate(format: "category = 'Yoga'")
-            filteredCoaches = db.coaches.filter(byCategory)
-        case 2:
-            let byCategory = NSPredicate(format: "category ='Swimming'")
-            filteredCoaches = db.coaches.filter(byCategory)
-        case 3:
-            let byCategory = NSPredicate(format: "category ='Gymnastics'")
-            filteredCoaches = db.coaches.filter(byCategory)
-        default:
-            filteredCoaches = db.coaches
-        }
-        tableView.reloadData()
+        search()
     }
 
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //        if segue.identifier == "TrainerDetail" {
-        //            guard let controller = segue.destination as? CoachDetailController else {
-        //                fatalError("Cannot find TrainerDetailController")
-        //            }
-        //            if let row = tableView.indexPathForSelectedRow?.row {
-        //                controller.coach = currentCoaches[row]
-        //
-        //            }
-        //        }
+        if segue.identifier == "CoachDetail" {
+            guard let controller = segue.destination as? CoachDetailController else {
+                fatalError("Cannot find CoachDetailController")
+            }
+            if let row = tableView.indexPathForSelectedRow?.row {
+                controller.coach = filteredCoaches![row]
+            }
+        }
     }
     
 }
+
+// MARK: - Memento
+
+private enum StateKeys: String {
+    case searchState
+    case searchTabState
+}
+
+
+extension CoachTableView: Restorable {
+    var state: State {
+        return [StateKeys.searchState.rawValue: self.searchBar.text ?? "",
+                StateKeys.searchTabState.rawValue: self.searchBar.selectedScopeButtonIndex]
+    }
+    
+    func restore(from state: State) -> Bool {
+        var result = true
+        
+        self.searchBar.text = state[StateKeys.searchState.rawValue] as? String ?? ""
+        var searchTabIndex = state[StateKeys.searchTabState.rawValue] as? Int ?? 0
+        if (searchTabIndex < 0 || searchTabIndex > 5) {
+            result = false
+            searchTabIndex = 0
+        }
+        self.searchBar.selectedScopeButtonIndex = searchTabIndex
+        search()
+        
+        return result
+    }
+}
+
