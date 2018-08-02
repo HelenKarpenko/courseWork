@@ -23,23 +23,23 @@ Everyone want to be healthy and tactful. To this end, we usually record to the f
 
 ### Example
 **Sign In**
-<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/SignIn.png" width="50%">
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/SignIn.png" width="30%">
 **Sign Up**
-![alt text](https://github.com/HelenKarpenko/courseWork/blob/assets/SignUp.png?raw=true)
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/SignUp.png" width="30%">
 **User's information**
-![alt text](https://github.com/HelenKarpenko/courseWork/blob/assets/UserInfo.png?raw=true)
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/UserInfo.png" width="30%">
 **User's bill**
-![alt text](https://github.com/HelenKarpenko/courseWork/blob/assets/UserBill.png?raw=true)
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/UserBill.png" width="30%">
 **Schedule**
-![alt text](https://github.com/HelenKarpenko/courseWork/blob/assets/Schedule.png?raw=true)
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/Schedule.png" width="30%">
 **Coaches list**
-![alt text](https://github.com/HelenKarpenko/courseWork/blob/assets/CoachList.png?raw=true)
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/CoachList.png" width="30%">
 **Coach's information**
-![alt text](https://github.com/HelenKarpenko/courseWork/blob/assets/CoachInfo.png?raw=true)
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/CoachInfo.png" width="30%">
 **Class information**
-![alt text](https://github.com/HelenKarpenko/courseWork/blob/assets/ClassInfo.png?raw=true)
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/ClassInfo.png" width="30%">
 **Add new class**
-![alt text](https://github.com/HelenKarpenko/courseWork/blob/assets/CreateNewClass.png?raw=true)
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/CreateNewClass.png" width="30%">
 
 ## Authors
 
