@@ -23,7 +23,7 @@ Everyone want to be healthy and tactful. To this end, we usually record to the f
 
 ### Example
 **Sign In**
-![alt text](https://github.com/HelenKarpenko/courseWork/blob/assets/SignIn.png?raw=true)
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/SignIn.png" width="48">
 **Sign Up**
 ![alt text](https://github.com/HelenKarpenko/courseWork/blob/assets/SignUp.png?raw=true)
 **User's information**
@@ -41,30 +41,7 @@ Everyone want to be healthy and tactful. To this end, we usually record to the f
 **Add new class**
 ![alt text](https://github.com/HelenKarpenko/courseWork/blob/assets/CreateNewClass.png?raw=true)
 
-## Installation ???
-**Cocoapods**
-
-[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects.
-To integrate FitnessLife into your Xcode project using CocoaPods, specify it in your Podfile:
-```
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
-
-target 'FitnessLife' do
-# Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-use_frameworks!
-
-# Pods for FitnessLife
-pod 'RealmSwift'
-end
-```
-
 ## Authors
 
 * **Karpenko Olena** - *iOS developer* - [HelenKarpenko](https://github.com/HelenKarpenko)
 
-## License
-
-![alt text](https://github.com/HelenKarpenko/courseWork/blob/assets/ClassInfo.png?raw=true)
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-We all want to be healthy and tactful. To this end, we are most likely to sign up for the fitness club. Therefore, the task of registering a fitness club is very relevant today. You can easily learn about and write new lessons. You also do not need to remember the time at which you have scheduled classes, just open the application and get the right information from there.Тому задача обліку фітнес-клубу є досить актуальною на сьогодні. Ви можете легко дізнаватися про нові заняття та записуватись на них. Також вам не потрібно пам’ятати час на яки у вас заплановане заняття, достатньо відкрити додаток і отримати звідти потрібну інформацію.To this end, we usually record to the fitness club.
