@@ -1,55 +1,47 @@
-# Fitnes life
+# FitnessLife
 
 #### [Docs](https://docs.google.com/document/d/1bxz1ocSrlYOd6PsBJMXv9oBXpvpd-GnsiGihsjskHCo/edit?usp=sharing)
 
 ## Motivation
 This project was done as a part of the course work: **application of programming templates in software development.**
 ## The main idea
+Everyone want to be healthy and tactful. To this end, we usually record to the fitness club. Therefore, the task of registering a fitness club is very relevant today. You can easily learn about new lessons and sign up for them. You also do not need to remember the time at which you have scheduled classes. You just need open the application and get the right information from there.
 
 ### Features
-1. The user can register by email and password.
-1. The client is authorized by the server using a key JWT-strategy (access/refresh token). 
-2. The user can create wallet with specific name and currency.
-3. The user can add transaction to wallet with different currency, then it was specified in wallet.
-4. The user can delete wallet and transactions.
-5. The user can view chart with all transactions.
-6. The server makes requests National Bank of Ukraine and gets actual currencies rate every day. 
-7. The server and the client communicate using only GraphQL.
+1. The user can register.
+2. The user can manage a personal schedule: enroll or unsubscribe from classes.
+3. The coach as a moderator can delete, add and change classes.
+4. The user can see the amount that he must pay for all classes.
+5. Easy search for lessons and filtering by categories.
 
-### Prerequisites
+### Requirements
 
-You need have installed Node.js environment and npm manager. [Here is link to tutorial](https://www.npmjs.com/get-npm) 
+* Swift 4.0
+* iOS 11.1+
+* Xcode 9.x
+* Realm Database
 
-
-## Getting Started
-**Client side**
-1. Go to directory with client sources
-   ```sh
-   cd src/client
-   ```
-2. Make sure you have npm installed. Then install dependencies with command
-    ```sh
-    npm i
-    ```    
-3. **Dev mode** allows you run client app on local machine without server (it's bundled)
-    ```sh
-    npm start
-    ```
-4.  **Production build**  next command build bundle for production use, minimize code and compress it
-    ```sh
-    npm run build
-    ```
-## Built With
-* [Swift]()
-* DB
-
-## Versioning
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/ZulusK/Budgetarium/tags). 
+### Example
+**Sign In**
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/SignIn.png" width="30%">
+**Sign Up**
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/SignUp.png" width="30%">
+**User's information**
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/UserInfo.png" width="30%">
+**User's bill**
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/UserBill.png" width="30%">
+**Schedule**
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/Schedule.png" width="30%">
+**Coaches list**
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/CoachList.png" width="30%">
+**Coach's information**
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/CoachInfo.png" width="30%">
+**Class information**
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/ClassInfo.png" width="30%">
+**Add new class**
+<img src="https://github.com/HelenKarpenko/courseWork/blob/assets/CreateNewClass.png" width="30%">
 
 ## Authors
 
 * **Karpenko Olena** - *iOS developer* - [HelenKarpenko](https://github.com/HelenKarpenko)
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
