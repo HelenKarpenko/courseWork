@@ -1,0 +1,419 @@
+You are developing code for a method that calculates the discount for the items sold. 
+You name the method CalculateDiscount. 
+The method defines a variable, percentValue of the type double. 
+You need to make sure that percentValue is accessible only within the CalculateDiscount method.
+Which access modifier should you use when defining the percentValue variable?
+
+    * private   +
+    * protected
+    * internal
+    * public
+
+    - private - доступ только внутри класса
+    - protected - доступ только внутки класса и наследниках
+    - internal - доступны внутри сборки 
+    - public - доступлы всем 
+
+-------------------------------------------------------------------------------------------------------------   
+You are developing code that defines an InitFields method. 
+The method takes two parameters of data type double and does not return any value to the calling code.
+Which of the following code segments would you use to define the InitFields method?
+
+    * public double InitFields(double l, double w){
+        length = l;
+        width = w;
+        return length * width;
+    }
+    * public void InitFields(double l, double w){   +
+        length = l;
+        width = w;
+    }
+    * public void InitFields(double l){
+        length = l;
+        width = l;
+        return;
+    }
+    * public double InitFields(double l, double w){
+        length = l;
+        width = w;
+    }
+
+-------------------------------------------------------------------------------------------------------------   
+You created a class named GeoShape. You defined a method called Area in the GeoShape class. 
+This method calculates the area of a geometric shape. 
+You want the derived classes of GeoShape to supersede this functionality to support the area calculation of additional geometric shapes. 
+When the method Area is invoked on a GeoShape object, the area should be calculated based on the runtime type of the GeoShape object. 
+Which keyword should you use with the definition of the Area method in the GeoShape class?
+
+    * abstract
+    * virtual   +
+    * new      
+    * overrides
+
+    - abstract - отсутствующую реализация. Абстрактный класс может быть только базовим классом для других классов.
+                 Абстрактные члены должны быть реализованы в наследниках. Нельзя создать экземпляр абстрактного класса. 
+    - virtual - разрешает переопределять в наследниках. Используется в паре с overrid.
+    - new - явно скривает унаследованый метод.
+    - override - для изменения абстрактной или виртуальной реализации унаследованого от родительского класса.
+
+-------------------------------------------------------------------------------------------------------------   
+Suppose that you defined a class Scenario that defines functionality for running customized pivot transform on large data sets. 
+You do not want the functionality of this class to be inherited into derived classes. 
+What keyword should you use to define the Scenario class?
+
+    * sealed    +
+    * abstract
+    * private
+    * internal
+
+    - sealed -  запрещает наследовать класса.
+    - abstract - отсутствующую реализация.
+    - private - доступно внутри класса.
+    - internal - доступно внутри сборки.
+
+-------------------------------------------------------------------------------------------------------------   
+You need to provide printing functionality to several of your classes. Each class’s algorithm for printing will likely be different. 
+Also, not all the classes have an “is-a” relationship with each other. How should you support this functionality?
+
+    * Add the print functionality to a base class with the public access modifier.
+    * Have all classes inherit from an abstract base class and override the base-class method to provide their own print functionality.
+    * Have all the classes inherit from a base class that provides the print functionality.
+    * Create a common interface that all classes implement.     +
+
+    - интерфейс - установка контрактов
+
+-------------------------------------------------------------------------------------------------------------   
+Suppose that you are writing code for a class named Order. 
+You need to make sure that the data members of the class are initialized to their correct values as soon as you create an object of the Order class.
+The initialization code should always be executed. 
+What should you do?
+
+    * Create a static method in the Order class to initialize data members.
+    * Create a constructor in the Order class to initialize data members.   +
+    * Create a static property in the Order class to initialize data members.
+    * Create an event in the Order class to initialize data members.
+
+-------------------------------------------------------------------------------------------------------------   
+
+You are creating a new class named Sphere derived from the Shape class. 
+The Shape class has the following code:
+
+    class Shape{
+        public virtual void Area(){
+            // additional code...
+        }
+    }
+
+The Area method in the Shape class should provide new functionality but also hide the Shape class implementation of the Area method. 
+Which code segment should you use to accomplish this?
+
+    * class Sphere : Shape {            
+        public override void Area(){
+            // additional code ...
+        }
+    }
+    * class Sphere : Shape {
+        public new void Area(){
+            // additional code ...
+        }
+    }
+    * class Sphere : Shape {
+        public virtual void Area(){
+            // additional code ...
+        }
+    }
+    * class Sphere : Shape {
+        public static void Area(){
+            // additional code ...
+        }
+    }
+
+-------------------------------------------------------------------------------------------------------------   
+You are creating a new class named Polygon. 
+You write the following code:
+
+    class Polygon : IComparable{
+        public double Length { get; set; }
+        public double Width { get; set; }
+        
+        public double GetArea(){
+            return Length * Width;
+        }
+        
+        public int CompareTo(object obj){
+            // to be completed
+        }
+    }
+    
+You need to complete the definition of the CompareTo method to enable comparison of the Polygon objects. 
+Which of the following code segments should you use?
+
+    * public int CompareTo(object obj){
+        Polygon target = (Polygon)obj;
+        double diff = this.GetArea() - target.GetArea();
+        if (diff == 0)
+            return 0;
+        else if (diff > 0)
+            return 1;
+        else return -1;
+    }
+    * public int CompareTo(object obj){       
+        Polygon target = (Polygon)obj;
+        double diff = this.GetArea() - target.GetArea();
+        if (diff == 0)
+            return 1;
+        else if (diff > 0)
+            return -1;
+        else return 0;
+    }
+    * public int CompareTo(object obj){
+        Polygon target = (Polygon)obj;
+        if (this == target)
+            return 0;   
+        else if (this > target)
+            return 1;
+        else return -1;
+    }
+    * public int CompareTo(object obj){
+        Polygon target = (Polygon)obj;
+        if (this == target)
+            return 1;
+        else if (this > target)
+            return -1;
+        else return 0;
+    }
+
+-------------------------------------------------------------------------------------------------------------   
+You are writing code for a new method named Draw:
+
+    void Draw(object o){
+
+    }
+
+The code receives a parameter of type object. 
+You need to cast this object into the type Polygon.
+At times, the value of o that is passed to the method might not be a valid Polygon value. 
+You need to make sure that the code does not generate any System.InvalidCastException errors while doing the conversions. 
+Which of the following lines of code should you use inside the Draw method to accomplish this goal?
+
+    * Polygon p = (Polygon) o;      
+    * Polygon p = o is Polygon;
+    * Polygon p = o as Polygon;     +
+    * Polygon p = (o != null) ? o as Polygon : (Polygon) o;
+
+-------------------------------------------------------------------------------------------------------------   
+Дан массив, состоящий из 100 отсортированных по возрастанию чисел. 
+За какое наименьшее число операций сравнения можно проверить, есть ли заданное число в массиве.
+    
+    * 1
+    * 50    +
+    * 51
+    * 52
+    * 99
+    * 100
+    * 101
+-------------------------------------------------------------------------------------------------------------   
+Что вернёт функция?
+
+    public int getInt(){
+        try {
+            return 0;
+        } catch (NullReferenceException e) {
+            return 1;
+        } finally {
+            return 2;
+        }
+    }
+
+    * Ошибка компиляции
+    * 0
+    * 1
+    * 2
+
+-------------------------------------------------------------------------------------------------------------   
+Вам необходимо выяснить закономерность, по которой цифры стоят в данной последовательности и определить цифру, которая должна стоять вместо вопросительного знака.
+ 
+    1=4, 2=3, 3=3, 4=6, 5=4, 6=5, 7=4, 8=?
+
+    * 1
+    * 2
+    * 3
+    * 4
+    * 5     +
+    * 6
+    * 7
+    * 8
+
+-------------------------------------------------------------------------------------------------------------   
+Дано натуральное число n>1. 
+Проверьте, является ли оно простым. 
+Программа должна вывести слово YES, если число простое и NO, если число составное. 
+Алгоритм должен иметь сложность O(logn).
+Указание. Понятно, что задача сама по себе нерекурсивна, т.к. проверка числа n на простоту никак не сводится к проверке на простоту меньших чисел. 
+Поэтому нужно сделать еще один параметр рекурсии: делитель числа, и именно по этому параметру и делать рекурсию.
+
+-------------------------------------------------------------------------------------------------------------   
+Создать классы треугольник, квадрат, прямоугольник и шестиугольник. 
+В каждом классе должен быть метод вычисления периметра фигуры. 
+Кроме того, реализовать вычисление площади для квадрата и прямоугольника в одном методе. 
+Создать массив (коллекцию) разных фигур, содержащий не менее 10-и фигур и состоящий из не менее 2-х фигур каждого типа. 
+Вывести на экран тип фигуры и его периметр в цикле, который проходит по всем фигурам без использования условных операторов. 
+Если фигура – квадрат или прямоугольник, вывести площадь (для этого можно использовать условный оператор).
+При необходимости можно создавать дополнительные, методы, классы и т.д.
+
+
+
+-------------------------------------------------------------------------------------------------------------   
+Какие из следующих модификаторов используются в C#?
+
+    * private               +
+    * protected external
+    * external
+    * public                +
+    * internal              +
+    * protected internal    +
+
+-------------------------------------------------------------------------------------------------------------   
+    "public static void Main(string[] args){
+        int k = 1;
+        Console.WriteLine(k++ + ++k);
+    }
+
+    * 3
+    * 2
+    * 5
+    * 4     +
+
+-------------------------------------------------------------------------------------------------------------   
+Корректно ли выполняется код
+
+    private int GetID (string inputText) {
+        if (inputText != "")
+            return 1;
+        else if (inputText == "")
+            return 0;
+    }
+    
+    * Да
+    * Нет   +
+    * Да, если inputText == null
+    * Нет, если inputText == null
+
+-------------------------------------------------------------------------------------------------------------   
+Что будет выведено на экран?
+
+    public abstract class A {
+        public virtual string Print() { 
+            return "A"; 
+        }
+    }
+
+    public class B : A {
+        public override string Print() { 
+            return "B"; 
+        } 
+    }
+
+    public class C : B {
+        public new string Print() { 
+            return "C"; 
+        } 
+    }
+
+    // Часть метода Main\
+    
+    A ac = new C(); 
+    Console.WriteLine(ac.Print());",
+
+    * Ошибка компиляции
+    * C
+    * A
+    * B
+
+-------------------------------------------------------------------------------------------------------------   
+Что выведет на консоль следующая программа:
+
+  class Program {
+        public delegate void MethodDelegate(string param);
+
+        private void privateMethod(string str) {
+            Console.Write(str);
+        } 
+
+        public void GetMeth(out MethodDelegate md) { 
+            md = privateMethod;
+        }
+
+        static void Main(string[] args) { 
+            MethodDelegate myMethod; 
+            Program program = new Program();
+            program.GetMeth(out myMethod);
+            myMethod(\"Hello\");
+            Console.Write(\"_world\");
+            Console.ReadKey();
+        }
+    }
+        
+    * _world
+    * Ошибка компиляции
+    * Hello
+    * Hello_world
+    * Ошибка времени выполнения
+
+-------------------------------------------------------------------------------------------------------------   
+Где будет хранится содержимое integer поля вашего класса при создании объекта этого класса?
+
+    * В Heap    +
+    * В Stack
+    * В processor register
+    * В binary object area
+
+-------------------------------------------------------------------------------------------------------------   
+Что обозначает ключевое слово finally?
+
+    * В С# нет такого ключевого слова.
+    * Блок обработки исключений, который выполнится в любом случае. +
+    * Завершение работы программы.
+    * Вызов финализаторов, используемых объектов.
+
+-------------------------------------------------------------------------------------------------------------   
+Какой модификатор доступа следует указать для члена класса, 
+если вы хотите, чтобы член класса был доступен только самому классу и классам, наследуемым от него?
+
+    * protected     +
+    * private
+    * internal
+    * public
+
+-------------------------------------------------------------------------------------------------------------   
+В чем различие между классом и структурой?
+    
+    * Структура предназначена для хранения значений, а класс для ссылок
+    * Объект класса создается в управляемой куче, а объект структуры - в стеке  +
+    * В классе можно объявлять методы, а в структуре нет
+    * При наследовании структуры происходит неявная операция упаковки/распаковки
+
+-------------------------------------------------------------------------------------------------------------   
+Что произойдет при выполнении следующего SQL запроса? 
+    SELECT * FROM some_table WHERE 1=1;
+
+    * Возникнет ошибка синтаксиса запроса
+    * Не выберется ни одной записи из таблицы some_table
+    * Выберутся все записи из таблицы some_table
+    * В результате запроса будет только одно поле NULL
+
+-------------------------------------------------------------------------------------------------------------   
+Как удалить таблицу \"some_table\"
+
+    * CLEAN TABLE some_table;
+    * ERASE TABLE some_table;
+    * DELETE TABLE some_table;
+    * DROP TABLE some_table;    +
+
+-------------------------------------------------------------------------------------------------------------   
+Как реализованы в .Net базовые типы (int, double и т.д.)
+    
+    * В виде структур   +
+    * В виде классов
+    * В виде диапазонов значений
+    * В виде перечислений
