@@ -20,6 +20,7 @@ Everyone want to be healthy and tactful. To this end, we usually record to the f
 * iOS 11.1+
 * Xcode 9.x
 * Realm Database
+* CocoaPods
 
 ### Example
 **Sign In**
@@ -41,7 +42,4 @@ Everyone want to be healthy and tactful. To this end, we usually record to the f
 **Add new class**
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/CreateNewClass.png" width="30%">
 
-## Authors
-
-* **Karpenko Olena** - *iOS developer* - [HelenKarpenko](https://github.com/HelenKarpenko)
 
