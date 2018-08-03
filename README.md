@@ -25,21 +25,30 @@ Everyone want to be healthy and tactful. To this end, we usually record to the f
 ### Example
 **Sign In**
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/SignIn.png" width="30%">
+<br/>
 **Sign Up**
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/SignUp.png" width="30%">
+<br/>
 **User's information**
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/UserInfo.png" width="30%">
+<br/>
 **User's bill**
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/UserBill.png" width="30%">
+<br/>
 **Schedule**
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/Schedule.png" width="30%">
+<br/>
 **Coaches list**
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/CoachList.png" width="30%">
+<br/>
 **Coach's information**
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/CoachInfo.png" width="30%">
+<br/>
 **Class information**
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/ClassInfo.png" width="30%">
+<br/>
 **Add new class**
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/CreateNewClass.png" width="30%">
+<br/>
 
 
