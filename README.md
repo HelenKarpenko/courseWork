@@ -23,31 +23,31 @@ Everyone want to be healthy and tactful. To this end, we usually record to the f
 * CocoaPods
 
 ### Example
-**Sign In**
+**Sign In** <br/>
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/SignIn.png" width="30%">
 <br/>
-**Sign Up**
+**Sign Up** <br/>
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/SignUp.png" width="30%">
 <br/>
-**User's information**
+**User's information** <br/>
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/UserInfo.png" width="30%">
 <br/>
-**User's bill**
+**User's bill** <br/>
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/UserBill.png" width="30%">
 <br/>
-**Schedule**
+**Schedule** <br/>
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/Schedule.png" width="30%">
 <br/>
-**Coaches list**
+**Coaches list** <br/>
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/CoachList.png" width="30%">
 <br/>
-**Coach's information**
+**Coach's information** <br/>
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/CoachInfo.png" width="30%">
 <br/>
-**Class information**
+**Class information** <br/>
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/ClassInfo.png" width="30%">
 <br/>
-**Add new class**
+**Add new class** <br/>
 <img src="https://github.com/HelenKarpenko/courseWork/blob/assets/CreateNewClass.png" width="30%">
 <br/>
 
